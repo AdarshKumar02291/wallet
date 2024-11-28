@@ -5,7 +5,7 @@ function Header({ darkMode, setDarkMode }: any) {
   return (
     <div
       className={`
-         h-[100px] flex items-center justify-between w-screen px-8`}
+         h-[100px] flex items-center justify-between full px-8`}
     >
       <div className="text-[30px] font-bold">Kosh</div>{" "}
       <div className="flex ">
