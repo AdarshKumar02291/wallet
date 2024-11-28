@@ -21,7 +21,7 @@ function Main() {
   };
   const handleWallet = () => {
     const seed = mnemonicToSeedSync(
-      "jealous marble decrease clump miracle exile patrol erase bag priority hollow club"
+      ""
     );
     console.log(seed.toString("hex"))
     const seedHex = seed.toString("hex");
