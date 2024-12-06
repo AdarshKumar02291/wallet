@@ -1,6 +1,3 @@
-Here's a template for a README file for your crypto wallet project:
-
----
 
 # Crypto Wallet
 
@@ -82,10 +79,3 @@ We welcome contributions! Please fork the repository and submit a pull request.
 
 ---
 
-## License
-
-This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
-
----
-
-Let me know if you'd like any additional details or customization!
