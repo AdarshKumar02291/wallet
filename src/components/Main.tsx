@@ -2,6 +2,7 @@ import { Button } from "./ui/button";
 import { Input } from "./ui/input";
 import { useState } from "react";
 import { getWallets } from "@/services/wallet";
+import { generateMnemonic, mnemonicToSeedSync, validateMnemonic } from "bip39";
 
 function Main() {
   const [wallet, setWallet] = useState<string>("");
@@ -13,8 +14,15 @@ function Main() {
   };
 
   const handleWallet =async () => {
-    const wallets = await getWallets(wallet);
+    let wallets;
+    if(wallet===""){
+      const phrase = generateMnemonic();
+      wallets=await getWallets(phrase)
+    }
+    else{
+     wallets = await getWallets(wallet);
     setGeneratedWallets(wallets);
+    }
   };
 
   console.log(generatedWallets)
