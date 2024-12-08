@@ -4,7 +4,7 @@ import Header from "./components/Header";
 import Main from "./components/Main";
 
 const App = () => {
-  const [darkMode, setDarkMode] = useState(false);
+  const [darkMode, setDarkMode] = useState(true);
 
   // Wrap the Header component with the DarkModeComponent HOC
   const WrappedHeader = DarkModeComponent(Header, darkMode);

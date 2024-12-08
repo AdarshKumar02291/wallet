@@ -4,6 +4,7 @@ import { derivePath } from "ed25519-hd-key";
 import { Keypair } from "@solana/web3.js";
 import { Buffer } from "buffer";
 import bs58 from "bs58";
+import { walletBalance } from "./walletBalance";
 
 // Ensure Buffer is globally available
 (window as any).Buffer = Buffer;
@@ -15,10 +16,9 @@ export const getWallets = (mnemonic: string) => {
       console.error("No mnemonic provided");
       return [];
     }
-    let wallets =[] ;
+    let wallets = [];
     const seed = mnemonicToSeedSync(mnemonic);
-
-    const path = `m/44'/501'/1'/0'`;
+    const path = `m/44'/501'/0'/0'`;
 
     const { key: derivedSeed } = derivePath(path, seed.toString("hex"));
 
@@ -32,8 +32,8 @@ export const getWallets = (mnemonic: string) => {
     privateKeyEncoded = bs58.encode(secretKey);
     publicKeyEncoded = keypair.publicKey.toBase58();
     console.log(publicKeyEncoded);
-    console.log(privateKeyEncoded)
-    wallets.push({publicKeyEncoded,privateKeyEncoded})
+    console.log(privateKeyEncoded);
+    wallets.push({ publicKeyEncoded, privateKeyEncoded });
 
     return wallets;
   } catch (error) {

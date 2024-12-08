@@ -3,6 +3,7 @@ import { Input } from "./ui/input";
 import { useState } from "react";
 import { getWallets } from "@/services/wallet";
 import { generateMnemonic, mnemonicToSeedSync, validateMnemonic } from "bip39";
+import { walletBalance } from "@/services/walletBalance";
 
 function Main() {
   const [wallet, setWallet] = useState<string>("");
@@ -21,11 +22,24 @@ function Main() {
     }
     else{
      wallets = await getWallets(wallet);
-    setGeneratedWallets(wallets);
+     setGeneratedWallets(wallets);
     }
+
+    const data =   {
+      jsonrpc: "2.0",
+      id: 1,
+      method:"getBalance", 
+      params:
+      [
+      "4deAZ6HXrAfjzBz4vo1oBsDKbJcSdorpgrPaSZ8hAf6N"
+      ]
+    }
+
+   const balance = await walletBalance(data);
+   console.log(balance)
   };
 
-  console.log(generatedWallets)
+  
 
   return (
     <div className="w-full h-screen text-[32px] px-8">
